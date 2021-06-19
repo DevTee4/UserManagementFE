@@ -1,0 +1,58 @@
+.newBtn {
+    background-color: white;
+    color: #04aadc;
+}
+.miniBg {
+    background-color: white;
+    padding: 30px;
+}
+.tableContent {
+    max-width:2018px;
+    max-height: 65vh;
+}
+::ng-deep .cdk-overlay-pane {
+    background: white;
+  }
+  :host ::ng-deep .mat-select-panel {
+    min-width: 100%;
+  }
+  
+  :host ::ng-deep .mat-form-field-wrapper {
+    padding: 0px;
+  }
+  
+  .border-style {
+    border: 1px solid #3e4097;
+    border-radius: 5px;
+  }
+
+  table.datatable {
+    width:100%;
+    border: none;
+    background:#fff;
+  }
+  table.datatable td.table_foot {
+    border: none;
+    background: #fff;
+    text-align: center;
+  }
+  table.datatable tr.odd_col {
+    background: none;
+  }
+  table.datatable tr.even_col {
+    background: #ddd;
+  }
+  table.datatable td {
+    font-size:10pt;
+    padding:5px 10px;
+    text-align: left;
+  }
+  table.datatable th {
+    text-align: left;
+    font-size: 8pt;
+    padding: 10px 10px 7px;   
+    text-transform: uppercase;
+    color: #fff;
+    background-color: black;
+    font-family: sans-serif;
+  }

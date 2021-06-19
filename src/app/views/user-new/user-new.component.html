@@ -1,0 +1,109 @@
+<div class="h80 py-3">
+    <div class="miniBg h-100 d-flex flex-column justify-content-center">
+    <form [formGroup] = "registerForm">
+        <!-- Phone number -->
+        <div class="mb-3 w-50 mx-auto ">
+            <label for="defaultRegisterPhonePassword" class="text-left">Phone Number</label>
+            <input
+            type="text"
+            formControlName="phoneNumber"
+            class="form-control p-4"
+            placeholder="Phone Number"
+            [(ngModel)]="user.phone"
+            required/>
+            <span
+            id="defaultRegisterFormPhoneHelpBlock"
+            class="form-text text-danger"
+            *ngIf="f.phoneNumber.touched && !user.phone">
+            Phone number is required
+            </span>
+        </div>
+        <!-- First Name -->
+        <div class="mb-3 w-50 mx-auto">
+            <label for="defaultRegisterFormFirstName" class="text-left">First Name</label>
+            <input
+            type="text"
+            formControlName="firstName"
+            class="form-control p-4"
+            placeholder="First Name"
+            required
+            [(ngModel)]="user.firstName"/>
+            <span *ngIf="f.firstName.touched && !user.firstName" class="text-danger">
+              *First Name is required
+            </span>
+        </div>
+        <!-- Last Name-->
+        <div class="mb-3 w-50 mx-auto">
+          <label for="defaultRegisterFormLastName" class="text-left">Last Name</label>
+          <input
+          type="text"
+          formControlName="lastName"
+          class="form-control p-4"
+          placeholder="Last Name"
+          aria-describedby="defaultRegisterFormLastName"
+          [(ngModel)]="user.lastName"/>
+          <span *ngIf="f.lastName.touched && !user.lastName" class="text-danger">
+            *Last Name is required
+          </span>
+        </div>
+        <!-- Email-->
+        <div class="mb-3 w-50 mx-auto">
+            <label for="defaultRegisterFormEmail" class="text-left">Email Address</label>
+            <input
+            type="text"
+            formControlName="email"
+            class="form-control p-4"
+            placeholder="Email Address"
+            aria-describedby="defaultRegisterFormEmail"
+            [(ngModel)]="user.email"/>
+            <span *ngIf="f.email.touched && !user.email" class="text-danger form-text mb-4">*Email is Required</span>
+            <span *ngIf="!f.email.valid && f.email.touched && f.email.value" class="text-danger form-text mb-4">Enter a Valid Email address</span>
+        </div>
+        <!-- Gender-->
+        <div class="mb-3 w-50 mx-auto">
+            <label for="defaultRegisterFormGender" class="text-left">Gender</label>
+            <input
+            type="text"
+            formControlName="gender"
+            class="form-control p-4"
+            placeholder="Gender"
+            aria-describedby="defaultRegisterFormGender"
+            [(ngModel)]="user.gender"/>
+            <span *ngIf="f.gender.touched && !user.gender" class="text-danger">
+              *Gender is required
+            </span>
+        </div>
+
+         <!-- dob-->
+         <div class="mb-3 w-50 mx-auto">
+            <mat-label class="mr-2">DOB</mat-label>
+            <div class="ml-1 row">
+            <input formControlName="dateOfBirth"  class="form-control w-50 p-4" matInput [matDatepicker]="picker" [(ngModel)]="user.dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            </div>
+            <mat-datepicker  #picker></mat-datepicker>
+      </div>
+
+        <!-- Nationality-->
+        <div class="mb-3 w-50 mx-auto">
+            <label for="defaultRegisterFormNationality" class="text-left">Nationality</label>
+            <input
+            type="text"
+            formControlName="nationality"
+            class="form-control p-4"
+            placeholder="Nationality"
+            aria-describedby="defaultRegisterFormNationality"
+            [(ngModel)]="user.nationality"/>
+            <span *ngIf="f.nationality.touched && !user.nationality" class="text-danger">
+              *Nationality is required
+            </span>
+        </div>
+        <!-- Sign up button -->
+        <div class="row w-50 mx-auto d-flex justify-content-end">
+            <button  mdbWavesEffect class=" btn closeBtn" (click)="closeButton()" type="button">Close</button>
+            <button  mdbWavesEffect class="btn saveBtn" (click) = "createUser()" type="button">{{createOrUpdateBtn}}</button>
+        </div>
+    </form>
+    </div>
+</div>
+

@@ -1,0 +1,91 @@
+<div class="px-0 py-3">
+    <div class="row col-9 mx-auto"> 
+      <mat-form-field class="col-6 ml-3 mt-3 my-auto bg-light p-3 rounded">
+        <input
+          #autocompleteInput
+          matInput
+          appearance="outline"
+          [formControl]="userCtrl"
+          [matAutocomplete]="auto"
+          #trigger="matAutocompleteTrigger"
+          type="text" 
+          name="topSearchBox"
+          id="topSearchBox"
+          aria-label="topSearchBox"
+          [placeholder]="hint"
+        />
+        <mat-autocomplete
+          class="w-100"
+          #auto="matAutocomplete"
+        >
+          <mat-option
+            *ngFor="let obj of filteredlist$ | async"
+            (click)="searchClick(obj)"
+            class="border-style"
+          >
+          <small
+          >{{ obj.firstName }} <b>{{ obj.lastName }}</b></small
+          >
+            <hr class="m-0 p-0 border" />
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mdbWavesEffect (click)="getAll()" class="ml-1 btn  rounded p-1" ><i
+        class="fas fa-plus fa-lg"
+        aria-hidden="true" ></i> Load All</button>
+        <button mdbWavesEffect (click)="delete()" class="ml-1 mr-2 btn btn-danger  rounded p-1" ><i
+          class="fas fa-plus fa-lg"
+          aria-hidden="true" ></i> Delete</button>
+          <button (click) = "createUser()"mdbWavesEffect class="ml-1 mr-2 btn btn-primary  rounded p-1" ><i
+        class="fas fa-plus fa-lg"
+        aria-hidden="true" ></i> New User</button>
+    </div>
+    <div class="miniBg overflow-auto tableContent mr-0">
+      <table mdbTable class="datatable" hover="true">
+        <thead>
+          <tr>
+            <th class="border border-right-0 appBg "> <b>Full name</b></th>
+            <th class="border appBg w-25"><b>Email address</b></th>
+            <th class="border border-left-0 appBg "><b>Phone number</b></th>
+            <th class="border border-left-0 appBg "><b>DOB</b></th>
+            <th class="border border-left-0 appBg "><b>Gender</b></th>
+            <th class="border border-left-0 appBg "><b>Nationality</b></th>
+            <th class="border border-left-0 appBg "><b>Edit</b></th>
+            <th class="border border-left-0 appBg "><b>Delete</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of data;let i=index;" >
+            <td class="align-middle">{{user.firstName}} {{user.lastName}}</td>
+            <td class="align-middle">{{user.email}}</td>
+            <td class="align-middle">{{user.phone}}</td>
+            <td class="align-middle">{{user.dateOfBirth | date: 'dd-MM-yyyy'}}</td>
+            <td class="align-middle">{{user.gender}}</td>
+            <td class="align-middle">{{user.nationality}}</td>
+            <td class="align-middle">   
+              <div class="custom-control custom-checkbox custom-control-inline ">
+              <button mdbWavesEffect (click)= "userCLick(user)" class="ml-1 btn btn-secondary  rounded p-1" ><i
+                class="fas fa-plus fa-lg"
+                aria-hidden="true" ></i> Edit</button>
+            </div>
+            </td>
+            <td class="align-middle">
+            <div class="custom-control align-middle custom-checkbox custom-control-inline "> 
+             <input 
+              #inputEl
+              class="custom-control-input"
+              type="checkbox"
+              [checked]="user.isChecked"
+              [(ngModel)]="data[i].isChecked"
+              id="{{'div'+i}}" />
+              <label for="{{'div'+i}}" class="text-left custom-control-label"></label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  
